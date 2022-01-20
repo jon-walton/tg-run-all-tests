@@ -1,0 +1,6 @@
+.idea
+.terragrunt-cache
+.terraform
+*.tfstate
+*.tfstate.*
+crash.log
