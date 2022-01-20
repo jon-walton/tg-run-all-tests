@@ -8,7 +8,7 @@ propagated down to dependent modules until all of the module's dependencies have
 ## prep
 
 ```bash
-cd ./terraform/uat
+cd ./terragrunt/uat
 find . -type d -name ".terragrunt-cache" -prune -exec rm -rf {} \;
 ```
 
