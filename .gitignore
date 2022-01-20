@@ -1,6 +1,9 @@
 .idea
 .terragrunt-cache
 .terraform
+.terraform.lock.hcl
+plan.json
+plan.tfplan
 *.tfstate
 *.tfstate.*
 crash.log

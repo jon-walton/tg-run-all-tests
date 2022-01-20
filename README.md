@@ -52,7 +52,7 @@ terragrunt run-all show
 # yep, now the state is as expected
 ```
 
-## shooting in the dark
+## Shooting in the dark
 
 we _could_ apply without planning, but then we lose the ability to audit/review/approve changes
 before deploying.
@@ -62,3 +62,24 @@ terragrunt run-all apply
 terragrunt run-all show
 # note how the child module is NOT using any mock values for it's inputs
 ```
+
+## Using Terraform instead...
+
+```bash
+brew install conftest opa
+cd ./terraform/uat
+```
+
+If we use conftest, we can enforce only approved modules are used as part of a plan. The example policies
+validate 2 things
+
+- No `resource` blocks are defined
+- Only approved modules are used
+
+```bash
+terraform init
+terraform plan -out plan.tfplan
+terraform show -json plan.tfplan | conftest - test -p ../policies
+```
+
+The policies are stored server side and can have unit tests
